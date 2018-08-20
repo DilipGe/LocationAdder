@@ -1,0 +1,55 @@
+﻿USE [LocationSaver]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spAddNewLocation]    Script Date: 8/18/2018 8:28:32 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE procedure [dbo].[spAddNewLocation]  
+    (  
+    @Address1 nvarchar(50),  
+    @Latitude decimal(12, 9),  
+    @Longitude decimal(12, 9),  
+    @Description nvarchar(100)  
+    )  
+    as  
+    begin  
+    insert into [dbo].[GoogleMap](Address1,Latitude,Longitude,Description)  
+    values(@Address1,@Latitude,@Longitude,@Description)  
+    end
+
+
+GO
+
+
+
+
+
+
+
+
+USE [LocationSaver]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spGetMap]    Script Date: 8/18/2018 8:29:06 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[spGetMap]  
+    as  
+    begin  
+    select Address1,Latitude,Longitude,Description from [dbo].[GoogleMap]  
+    end
+
+GO
+
+
